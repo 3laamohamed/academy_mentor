@@ -6,10 +6,7 @@ use App\Models\Gradebook;
 use App\Models\Grade;
 
 ?>
-
-<div
-  class="att-report-banner d-flex justify-content-center justify-content-md-between align-items-center flex-wrap"
->
+<div class="att-report-banner d-flex justify-content-center justify-content-md-between align-items-center flex-wrap">
   <div class="att-report-summary order-1">
     <h4 class="title">{{ get_phrase('Manage marks') }}</h4>
     <p class="summary-item">{{ get_phrase('Class') }} : <span>{{ $page_data['class_name'] }}</span></p>
@@ -56,7 +53,7 @@ use App\Models\Grade;
                 <th scope="col">{{ get_phrase('Grade point') }}</td>
                 <th scope="col">{{ get_phrase('Comment') }}</td>
                 <th scope="col">{{ get_phrase('Action') }}</td>
-            </tr>   
+            </tr>
         </thead>
         <tbody>
             @foreach($enroll_students as $enroll_student)
@@ -94,7 +91,7 @@ use App\Models\Grade;
                         <input class="form-control eForm-control" type="number" id="mark-{{ $enroll_student->user_id }}" name="mark" placeholder="mark" min="0" value="{{ $user_marks }}" required onchange="get_grade(this.value, this.id)">
                     </td>
                     <td>
-                        <span id="grade-for-mark-{{ $enroll_student->user_id }}">{{ get_grade($user_marks) }}</span> 
+                        <span id="grade-for-mark-{{ $enroll_student->user_id }}">{{ get_grade($user_marks) }}</span>
                     </td>
                     <td>
                         <input class="form-control eForm-control" type="text" id="comment-{{ $enroll_student->user_id }}" name="comment" placeholder="comment" value="{{ $comment }}" required>

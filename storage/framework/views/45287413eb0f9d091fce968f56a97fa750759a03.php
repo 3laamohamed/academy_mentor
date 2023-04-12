@@ -1,5 +1,3 @@
-
-   
 <?php $__env->startSection('content'); ?>
 <div class="mainSection-title">
     <div class="row">
@@ -203,6 +201,7 @@
                                 <th scope="col"><?php echo e(get_phrase('student name')); ?></th>
                                 <th scope="col"><?php echo e(get_phrase('student degree')); ?></th>
                                 <th scope="col"><?php echo e(get_phrase('total degree')); ?></th>
+                                <th scope="col">View Answers</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -213,6 +212,7 @@
                                     <td><?php echo e($user_data->where('id',$exam->user_id)->first()->name ?? 'no student found'); ?></td>
                                     <td><?php echo e($exam->exam_degree); ?></td>
                                     <td><?php echo e($exam_data->where('id',$exam->exam_id)->first()->total_marks); ?></td>
+                                    <td><a class="btn btn-primary" href="<?php echo e(route('admin.marks.view_answer',$exam->id)); ?>">View Answers</a></td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
@@ -281,4 +281,5 @@
 
 <!-- End Students area -->
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('admin.navigation', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\ams\resources\views/admin/marks/show_marks.blade.php ENDPATH**/ ?>

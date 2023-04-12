@@ -347,7 +347,7 @@ Route::controller(AdminController::class)->middleware('admin','auth','CheckSubsc
     //Marks route
     Route::get('admin/marks', 'marks')->name('admin.marks');
     Route::get('admin/marks/list/{id}', 'markView')->name('admin.marks.list');
-
+    Route::get('admin/marks/view_answer/solve={solve}', 'view_answer_student')->name('admin.marks.view_answer');
 
     //Grade routes
     Route::get('admin/grade', 'gradeList')->name('admin.grade_list');

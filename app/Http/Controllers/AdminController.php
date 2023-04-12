@@ -803,7 +803,7 @@ class AdminController extends Controller
         $class_id = $request['class_id'] ?? "";
         $class_room_id = $request['class_room_id'] ?? "";
         $section_id = $request['section_id'] ?? "";
-      
+
 		$users = User::where(function ($query) use($search) {
             $query->where('users.name', 'LIKE', "%{$search}%")
                 ->orWhere('users.email', 'LIKE', "%{$search}%")
@@ -4543,6 +4543,12 @@ public function examQuestionDelete($id='')
         ]);
         }
         return redirect(route('admin.policy'))->with(['policy'=>$policy,'message'=>'You have successfully added a new policy.']);
+    }
+
+    function view_answer_student($solve){
+//        $solve = 5685;
+        $exams = UserSolvedExam::with('answers')->where(['id'=>$solve])->first();
+        return view('admin.marks.show_answers',compact('exams'));
     }
 
 }

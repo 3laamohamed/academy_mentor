@@ -1,5 +1,5 @@
 @extends('admin.navigation')
-   
+
 @section('content')
 <div class="mainSection-title">
     <div class="row">
@@ -201,6 +201,7 @@
                                 <th scope="col">{{ get_phrase('student name') }}</th>
                                 <th scope="col">{{ get_phrase('student degree') }}</th>
                                 <th scope="col">{{ get_phrase('total degree') }}</th>
+                                <th scope="col">View Answers</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -211,6 +212,7 @@
                                     <td>{{$user_data->where('id',$exam->user_id)->first()->name ?? 'no student found' }}</td>
                                     <td>{{ $exam->exam_degree }}</td>
                                     <td>{{ $exam_data->where('id',$exam->exam_id)->first()->total_marks }}</td>
+                                    <td><a class="btn btn-primary" href="{{route('admin.marks.view_answer',$exam->id)}}">View Answers</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

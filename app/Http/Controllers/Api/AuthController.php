@@ -60,15 +60,15 @@ class AuthController extends Controller
                 'exam_degree' => $request->exam_degree,
             ]);
             if($data){
-                foreach ($request['questions'] as $ques){
+                foreach ($request->questions as $ques){
                     StudentAnswers::create([
                         'answer_id'=>$data->id,
-                        'title'=>$ques->title,
-                        'student_answers'=>$ques->student_answers,
-                        'correct_answers'=>$ques->correct_answers,
-                        'image'=>$ques->image,
-                        'degree'=>$ques->degree,
-                        'is_correct'=>$ques->is_correct,
+                        'title'=>$ques['title'],
+                        'student_answers'=>json_encode($ques['student_answers']),
+                        'correct_answers'=>json_encode($ques['correct_answers']),
+                        'image'=>$ques['image'],
+                        'degree'=>$ques['degree'],
+                        'is_correct'=>$ques['is_correct'],
                     ]);
                 }
             }

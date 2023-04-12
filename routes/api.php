@@ -29,6 +29,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Api'],function(){
         Route::get('exams','AuthController@getAllExams');
         Route::get('classes','AuthController@getClasses');
 });
+
 Route::group(['middleware'=>'auth:sanctum','namespace'=>'App\Http\Controllers\Api'],function(){
         Route::post('update_exam_status','AuthController@makeSolvedExam');
         Route::post('update_user_info','AuthController@updateUserInfo');
